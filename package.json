@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"marked",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "marked",
+    "description": "api documentation for [marked (v0.3.6)](https://github.com/chjj/marked) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-marked.svg)](https://travis-ci.org/npmdoc/node-npmdoc-marked)",
     "devDependencies": {
-        "marked": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "marked": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-marked",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-marked",
+    "keywords": [
+        "documentation",
+        "marked"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_marked.js",
+    "name": "npmdoc-marked",
+    "nameAlias": "npmdoc_marked",
+    "nameOriginal": "npmdoc-marked",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-marked.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.1"
+    "version": "0.0.2"
 }
